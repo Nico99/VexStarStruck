@@ -29,6 +29,10 @@ void resetMotors() {
 	motor[rightBack]  = 0;
 	motor[leftBack] = 0;
 	motor[leftBack] = 0;
+	motor[leftLiftBack] = 0;
+	motor[leftLiftFront] = 0;
+	motor[rightLiftBack] = 0;
+	motor[rightLiftFront] = 0;
 }
 
 //robot should move in linear direction with power and milliseconds
@@ -50,10 +54,34 @@ void turnDirec(string direction, int power, int milliSec) {
     }
 }
 
-void arcTurnDirec(string direction, int power, int milliSec) {
+void smoothTurn(string direction, int power, int milliSec) {
+	if(direction == "right") {
+			motor[leftBack] = power;
+			motor[leftFront] = power;
+			motor[rightBack] = power/2;
+			motor[rightFront] = power/2;
+			wait1Msec(milliSec);
+			resetMotors();
+	}
+	if(direction == "left") {
+			motor[leftBack] = power/2;
+			motor[leftFront] = power/2;
+			motor[rightBack] = power;
+			motor[rightFront] = power;
+			wait1Msec(milliSec);
+			resetMotors();
+	}
 
 }
 
-void turn() {
+void arcTurnDirec(string direction, int power, int milliSec) {
+		smoothTurn(direction, power, milliSec);
+}
+
+
+/**
+Lift motors
+*/
+void lift() {
 
 }
