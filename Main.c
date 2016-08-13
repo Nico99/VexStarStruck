@@ -126,23 +126,30 @@ task autonomous()
 {
 	//Robot Should be facing their respective star farthest on their side at start
 int side = 0;
-//switch(side){
-	//case LEFT
+switch(side){
+	case LEFTAUTON
 	//Forward
+
 	//Scoop
+
 	//Turn 90
+
 	//Forward
+
 	//Turn 180
+
 	//Release Chamber
+
 	//Load Chamber
+
 	//Release Chamber
 
-	//break;
+	break;
 
-	//case RIGHT
+	case RIGHTAUTON
 
-	//break;
-//}
+	break;
+}
 
 }
 
