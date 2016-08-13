@@ -11,6 +11,16 @@
 #pragma config(Motor,  port8,           leftLift,      tmotorVex393, openLoop)
 #pragma config(Motor,  port9,           leftFront,     tmotorVex393, openLoop)
 #pragma config(Motor,  port10,          leftBack,      tmotorVex393, openLoop)
+
+#pragma platform(VEX)
+
+//Competition Control and Duration Settings
+#pragma competitionControl(Competition)
+#pragma autonomousDuration(20)
+#pragma userControlDuration(120)
+
+#include "Vex_Competition_Includes.c"   //Main competition background code...do not modify!
+#include "Functions.h" //Matt and Banj External Functions file
 /*
          ,----,
        .'   .`|                                           ,--.
@@ -49,15 +59,7 @@
 */
 
 
-#pragma platform(VEX)
 
-//Competition Control and Duration Settings
-#pragma competitionControl(Competition)
-#pragma autonomousDuration(20)
-#pragma userControlDuration(120)
-
-#include "Vex_Competition_Includes.c"   //Main competition background code...do not modify!
-#include "Functions.h" //Matt and Banj External Functions file
 
 /*
            __          __        ___  __

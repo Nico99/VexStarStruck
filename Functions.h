@@ -1,4 +1,3 @@
-
 #pragma config(Sensor, in8,    actuatPoten,    sensorPotentiometer)
 #pragma config(Sensor, dgtl1,  rightLimit,     sensorTouch)
 #pragma config(Sensor, dgtl2,  rightLower,     sensorTouch)
