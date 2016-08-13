@@ -48,8 +48,6 @@
                              |___/                     |__/
 */
 
-//potentiometer direction tracking
-int deltaPot = 0;
 
 #pragma platform(VEX)
 
@@ -59,7 +57,27 @@ int deltaPot = 0;
 #pragma userControlDuration(120)
 
 #include "Vex_Competition_Includes.c"   //Main competition background code...do not modify!
+#include "Functions.h" //Matt and Banj External Functions file
 
+/*
+           __          __        ___  __
+\  /  /\  |__) |  /\  |__) |    |__  /__`
+ \/  /~~\ |  \ | /~~\ |__) |___ |___ .__/
+
+*/
+#define RIGHT 0;
+#define LEFT 1;
+
+
+//potentiometer direction tracking
+int deltaPot = 0;
+
+/*
+ ___            __  ___    __        __
+|__  |  | |\ | /  `  |  | /  \ |\ | /__`
+|    \__/ | \| \__,  |  | \__/ | \| .__/
+
+*/
 task updateSensors(){
 	while(true){
 		int potVal = SensorValue(actuatPoten);
@@ -100,7 +118,18 @@ void pre_auton()
 
 task autonomous()
 {
-	AutonomousCodePlaceholderForTesting();  // Remove this function call once you have "real" code.
+	//Robot Should be facing their respective star farthest on their side at start
+int side = 0;
+switch(side){
+	case LEFT
+
+	break;
+
+	case RIGHT
+
+	break;
+}
+
 }
 
 
