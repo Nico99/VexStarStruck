@@ -72,7 +72,7 @@ task openClaw(){
 	motor[claw] = 50;
 	wait10Msec(20);
 	motor[claw] = 0;
-	StopTask(openClaw);
+	stopTask(openClaw);
 }
 
 task closeClaw(){
@@ -82,15 +82,21 @@ task closeClaw(){
 		motor[claw] = -25;
 	}
 	motor[claw] = 0;
-	StopTask(closeClaw);
+	stopTask(closeClaw);
 }
 
 
+/*
+    .          .
+   / \        _|_
+  /___\  .  .  |   .-. .--.  .-. .--.--.  .-. .  . .--.
+ /     \ |  |  |  (   )|  | (   )|  |  | (   )|  | `--.
+'       ``--`- `-' `-' '  `- `-' '  '  `- `-' `--`-`--'
+*/
 void pre_auton()
 {
 	bStopTasksBetweenModes = true;
 }
-
 
 task autonomous()
 {
@@ -98,9 +104,16 @@ task autonomous()
 }
 
 
+/*
+.--.                                .--.           .           .
+|   :      o                       :              _|_          |
+|   |.--.  .  .    ._ .-. .--.     |     .-. .--.  |  .--. .-. |
+|   ;|     |   \  /  (.-' |        :    (   )|  |  |  |   (   )|
+'--' '   -' `-  `'    `--''         `--' `-' '  `- `-''    `-' `-
+*/
 task usercontrol()
 {
-	StartTask (updateSensors);
+	startTask (updateSensors);
 	while (true)
 	{
 		//Driving
@@ -117,10 +130,10 @@ task usercontrol()
 		motor[actuator] = vexRT(Btn8U)*100 - vexRT(Btn8D)*100;
 
 		//Claw
-		if(vexRT(Btn8L)) StartTask(openClaw);
-		if(vexRT(Btn8R)) StartTask(closeClaw);
+		if(vexRT(Btn8L)) startTask(openClaw);
+		if(vexRT(Btn8R)) startTask(closeClaw);
 
 		//Auto-open the claw
-		if(SensorValue(actuatPoten)<=300 && deltaPot<-10) StartTask(openClaw);
+		if(SensorValue(actuatPoten)<=300 && deltaPot<-10) startTask(openClaw);
 	}
 }
