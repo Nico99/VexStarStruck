@@ -25,11 +25,34 @@ _/              _/_/_/      _/    _/      _/_/_/       _/_/      _/        _/_/ 
 */
 
 
-//robot should move in linear direction
-void linearMove(int power, int time) {
+//robot should move in linear direction with power and milliseconds
+void linearMove(int power, int milliSec) {
 	motor[rightFront] = power;
 	motor[rightBack]  = power;
-	motor
+	motor[leftBack] = power;
+	motor[leftBack] = power;
+	wait1Msec(milliSec);
+	resetMotors();
+}
+
+void resetMotors() {
+  motor[rightFront] = 0;
+	motor[rightBack]  = 0;
+	motor[leftBack] = 0;
+	motor[leftBack] = 0;
+}
+
+void turnDirec(string direction, int power, int milliSec) {
+    if(direction == "left") {
+        linearMove(-power, milliSec);
+  	}
+  	if(direction == "right") {
+  	 	linearMove(power, milliSec);
+    }
+}
+
+void arcTurnDirec(string direction, int power, int milliSec) {
+
 }
 
 void turn() {
