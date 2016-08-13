@@ -24,6 +24,13 @@ _/              _/_/_/      _/    _/      _/_/_/       _/_/      _/        _/_/ 
 */
 
 
+void resetMotors() {
+  motor[rightFront] = 0;
+	motor[rightBack]  = 0;
+	motor[leftBack] = 0;
+	motor[leftBack] = 0;
+}
+
 //robot should move in linear direction with power and milliseconds
 void linearMove(int power, int milliSec) {
 	motor[rightFront] = power;
@@ -32,13 +39,6 @@ void linearMove(int power, int milliSec) {
 	motor[leftBack] = power;
 	wait1Msec(milliSec);
 	resetMotors();
-}
-
-void resetMotors() {
-  motor[rightFront] = 0;
-	motor[rightBack]  = 0;
-	motor[leftBack] = 0;
-	motor[leftBack] = 0;
 }
 
 void turnDirec(string direction, int power, int milliSec) {
