@@ -21,6 +21,7 @@
 
 #include "Vex_Competition_Includes.c"   //Main competition background code...do not modify!
 #include "Functions.h" //Matt and Banj External Functions file
+#include "UXLib.h" //Our little cosmetic function pack
 /*
          ,----,
        .'   .`|                                           ,--.
@@ -124,6 +125,14 @@ task autonomous()
 int side = 0;
 switch(side){
 	case LEFT
+	//Forward
+	//Scoop
+	//Turn 90
+	//Forward
+	//Turn 180
+	//Release Chamber
+	//Load Chamber
+	//Release Chamber
 
 	break;
 
@@ -168,3 +177,21 @@ task usercontrol()
 		if(SensorValue(actuatPoten)<=300 && deltaPot<-10) startTask(openClaw);
 	}
 }
+
+/*
+                                               ,w.
+                                             ,YWMMw  ,M  ,
+                        _.---.._   __..---._.'MMMMMw,wMWmW,
+                   _.-""        """           YP"WMMMMMMMMMb,
+                .-' __.'                   .'     MMMMW^WMMMM;
+    _,        .'.-'"; `,       /`     .--""      :MMM[==MWMW^;
+ ,mM^"     ,-'.'   /   ;      ;      /   ,       MMMMb_wMW"  @\
+,MM:.    .'.-'   .'     ;     `\    ;     `,     MMMMMMMW `"=./`-,
+WMMm__,-'.'     /      _.\      F"""-+,,   ;_,_.dMMMMMMMM[,_ / `=_}
+"^MP__.-'    ,-' _.--""   `-,   ;       \  ; ;MMMMMMMMMMW^``; __|
+           /   .'            ; ;         )  )`{  \ `"^W^`,   \  :
+          /  .'             /  (       .'  /     Ww._     `.  `"
+         /  Y,              `,  `-,=,_{   ;      MMMP`""-,  `-._.-,
+fsc     (--, )                `,_ / `) \/"")      ^"      `-, -;"\:
+         `"""                    `"""   `"'                  `---"
+*/
