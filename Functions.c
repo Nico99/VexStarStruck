@@ -29,9 +29,9 @@ _/              _/_/_/      _/    _/      _/_/_/       _/_/      _/        _/_/ 
 void linearMove(int power, int time) {
 	motor[rightFront] = power;
 	motor[rightBack]  = power;
-	motor
+	m
 }
 
-void turn() {
-
+task main() {
+ 	linearMove(60
 }

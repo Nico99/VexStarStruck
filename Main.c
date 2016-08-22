@@ -23,7 +23,7 @@
 #pragma userControlDuration(120)
 
 #include "Vex_Competition_Includes.c"   //Main competition background code...do not modify!
-//#include "Functions.h" //Matt and Banj External Functions file
+#include "Functions.h" //Matt and Banj External Functions file
 //#include "UXLib.h" //Our little cosmetic function pack
 /*
          ,----,
@@ -124,6 +124,7 @@ void pre_auton()
 
 task autonomous()
 {
+		linearMove(50, 2000);
 	//Robot Should be facing their respective star farthest on their side at start
 int side = 0;
 switch(side){
