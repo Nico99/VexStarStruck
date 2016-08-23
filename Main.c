@@ -4,12 +4,12 @@
 #pragma config(Sensor, dgtl11, leftLower,      sensorTouch)
 #pragma config(Sensor, dgtl12, leftLimit,      sensorTouch)
 #pragma config(Motor,  port1,           rightBack,     tmotorVex393, openLoop)
-#pragma config(Motor,  port2,           rightFront,    tmotorVex393, openLoop, reversed)
-#pragma config(Motor,  port3,           rightLiftFront, tmotorVex393, openLoop, reversed)
+#pragma config(Motor,  port2,           rightFront,    tmotorVex393, openLoop)
+#pragma config(Motor,  port3,           rightLiftFront, tmotorVex393, openLoop)
 #pragma config(Motor,  port4,           rightLiftBack, tmotorVex269, openLoop, reversed)
 #pragma config(Motor,  port5,           actuator,      tmotorVex393, openLoop, reversed)
 #pragma config(Motor,  port6,           claw,          tmotorVex393, openLoop)
-#pragma config(Motor,  port7,           leftLiftBack,  tmotorVex393, openLoop)
+#pragma config(Motor,  port7,           leftLiftBack,  tmotorVex393, openLoop, reversed)
 #pragma config(Motor,  port8,           leftLiftFront, tmotorVex393, openLoop)
 #pragma config(Motor,  port9,           leftFront,     tmotorVex393, openLoop)
 #pragma config(Motor,  port10,          leftBack,      tmotorVex393, openLoop)
@@ -174,11 +174,37 @@ task usercontrol()
 		motor[rightBack] = vexRT(Ch2) + vexRT(Ch1);
 
 		//Lifter
-		motor[leftLiftFront] = (!SensorValue(leftLimit))*vexRT(Btn6U)*100 - vexRT(Btn6D)*100;
-		motor[rightLiftFront] = (!SensorValue(rightLimit))*vexRT(Btn6U)*100 - vexRT(Btn6D)*100;
-		motor[leftLiftBack] = (!SensorValue(leftLimit))*vexRT(Btn6U)*100 - vexRT(Btn6D)*100;
-		motor[rightLiftBack] = (!SensorValue(rightLimit))*vexRT(Btn6U)*100 - vexRT(Btn6D)*100;
+	//	motor[leftLiftFront] = (!SensorValue(leftLimit))*vexRT(Btn6U)*100 + vexRT(Btn6D)*100;
+	//	motor[rightLiftFront] = (!SensorValue(rightLimit))*vexRT(Btn6U)*100 + vexRT(Btn6D)*100;
+	//	motor[leftLiftBack] = (!SensorValue(leftLimit))*vexRT(Btn6U)*100 - vexRT(Btn6D)*100;
+	//	motor[rightLiftBack] = (!SensorValue(rightLimit))*vexRT(Btn6U)*100 - vexRT(Btn6D)*100;
 
+//LUCY CODE THAT WORKS CURRENTLY:
+
+		if(vexRT(Btn6U)){
+			motor[rightLiftBack] = -127;
+			motor[leftLiftBack] = -127;
+			motor[leftLiftFront] = 127;
+			motor[rightLiftFront] = 127;
+		}
+		else{
+			motor[rightLiftBack] = 0;
+			motor[leftLiftBack] = 0;
+			motor[leftLiftFront] = 0;
+			motor[rightLiftFront] = 0;
+		}
+		if(vexRT(Btn6D)){
+			motor[rightLiftBack] = 127;
+			motor[leftLiftBack] = 127;
+			motor[leftLiftFront] = -127;
+			motor[rightLiftFront] = -127;
+		}
+		else{
+			motor[rightLiftBack] = 0;
+			motor[leftLiftBack] = 0;
+			motor[leftLiftFront] = 0;
+			motor[rightLiftFront] = 0;
+		}
 		//Actuator
 		motor[actuator] = vexRT(Btn8U)*100 - vexRT(Btn8D)*100;
 

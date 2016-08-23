@@ -23,6 +23,11 @@ _/              _/_/_/      _/    _/      _/_/_/       _/_/      _/        _/_/ 
 
 */
 
+/*
+
+reverse both backs of motors
+*/
+
 
 void resetMotors() {
   motor[rightFront] = 0;
@@ -39,7 +44,7 @@ void resetMotors() {
 void linearMove(int power, int milliSec) {
 	motor[rightFront] = power;
 	motor[rightBack]  = power;
-	motor[leftBack] = power;
+	motor[leftFront] = power;
 	motor[leftBack] = power;
 	wait1Msec(milliSec);
 	resetMotors();
@@ -82,6 +87,6 @@ void arcTurnDirec(string direction, int power, int milliSec) {
 /**
 Lift motors
 */
-void lift() {
-
+void lift(int time, int milli) {
+		motor[
 }
