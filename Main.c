@@ -71,12 +71,13 @@
  \/  /~~\ |  \ | /~~\ |__) |___ |___ .__/
 
 */
-#define RIGHTAUTON 0;
-#define LEFTAUTON 1;
+#define RIGHTAUTON  = 0;
+#define LEFTAUTON  =1;
 
+int deltaPot = 0;
 
 //potentiometer direction tracking
-int deltaPot = 0;
+
 
 /*
  ___            __  ___    __        __
@@ -85,6 +86,7 @@ int deltaPot = 0;
 
 */
 task updateSensors(){
+
 	while(true){
 		int potVal = SensorValue(actuatPoten);
 		wait1Msec(100);
@@ -124,6 +126,7 @@ void pre_auton()
 
 task autonomous()
 {
+	/*
 		linearMove(50, 2000);
 	//Robot Should be facing their respective star farthest on their side at start
 int side = 0;
@@ -151,6 +154,7 @@ switch(side){
 
 	break;
 }
+*/
 
 }
 
@@ -162,6 +166,8 @@ switch(side){
 |   ;|     |   \  /  (.-' |        :    (   )|  |  |  |   (   )|
 '--' '   -' `-  `'    `--''         `--' `-' '  `- `-''    `-' `-
 */
+
+
 task usercontrol()
 {
 	startTask (updateSensors);
@@ -187,13 +193,7 @@ task usercontrol()
 			motor[leftLiftFront] = 127;
 			motor[rightLiftFront] = 127;
 		}
-		else{
-			motor[rightLiftBack] = 0;
-			motor[leftLiftBack] = 0;
-			motor[leftLiftFront] = 0;
-			motor[rightLiftFront] = 0;
-		}
-		if(vexRT(Btn6D)){
+		else if(vexRT(Btn6D)){
 			motor[rightLiftBack] = 127;
 			motor[leftLiftBack] = 127;
 			motor[leftLiftFront] = -127;
@@ -205,6 +205,7 @@ task usercontrol()
 			motor[leftLiftFront] = 0;
 			motor[rightLiftFront] = 0;
 		}
+
 		//Actuator
 		motor[actuator] = vexRT(Btn8U)*100 - vexRT(Btn8D)*100;
 
@@ -216,6 +217,9 @@ task usercontrol()
 		if(SensorValue(actuatPoten)<=300 && deltaPot<-10) startTask(openClaw);
 	}
 }
+
+
+
 
 /* CODE CAT
                                                ,w.

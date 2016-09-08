@@ -88,5 +88,5 @@ void arcTurnDirec(string direction, int power, int milliSec) {
 Lift motors
 */
 void lift(int time, int milli) {
-		motor[
+		//motor[
 }
